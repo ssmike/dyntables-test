@@ -1,0 +1,41 @@
+version: '2'
+services:
+  control:
+    container_name: control
+    hostname: control
+    build: ./control
+    privileged: true
+  node:
+    container_name: jepsen-node
+    build: ./master
+  n1:
+    extends: node
+    container_name: jepsen-n1
+    hostname: n1
+    networks:
+      - default
+  n2:
+    extends: node
+    container_name: jepsen-n2
+    hostname: n2
+    networks:
+      - default
+  n3:
+    extends: node
+    container_name: jepsen-n3
+    hostname: n3
+    networks:
+      - default
+  n4:
+    extends: node
+    container_name: jepsen-n4
+    hostname: n4
+    networks:
+      - default
+  n5:
+    extends: node
+    container_name: jepsen-n5
+    hostname: n5
+    networks:
+      - default
+

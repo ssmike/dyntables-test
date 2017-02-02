@@ -1,0 +1,105 @@
+{
+    "snapshots" = {
+        "path" = "/master/snapshots";
+    };
+    "node_tracker" = {
+        "online_node_timeout" = 20000;
+        "registered_node_timeout" = 20000;
+    };
+    "bus_server" = {
+        "bind_retry_count" = 10;
+        "bind_retry_backoff" = 3000;
+    };
+    "changelogs" = {
+        "path" = "/master/changelogs";
+        "flush_period" = 10;
+        "enable_sync" = %false;
+    };
+    "rpc_port" = 10000;
+    "hydra_manager" = {
+        "response_keeper" = {
+            "expiration_time" = 25000;
+            "warmup_time" = 30000;
+        };
+        "leader_lease_check_period" = 100;
+        "leader_lease_timeout" = 20000;
+        "disable_leader_lease_grace_delay" = %false;
+        "leader_lease_grace_delay" = 60000;
+    };
+    "enable_provision_lock" = %false;
+    "chunk_manager" = {
+        "allow_multiple_erasure_parts_per_node" = %true;
+    };
+    "cypress_manager" = {
+        "default_file_replication_factor" = 1;
+        "default_table_replication_factor" = 1;
+        "default_journal_replication_factor" = 1;
+        "default_journal_read_quorum" = 1;
+        "default_journal_write_quorum" = 1;
+    };
+    "timestamp_provider" = {
+        "soft_backoff_time" = 100;
+        "hard_backoff_time" = 100;
+        "addresses" = [
+            "n1:10000";
+            "n2:10000";
+            "n3:10000";
+            "n4:10000";
+            "n5:10000";
+        ];
+    };
+    "logging" = {
+        "rules" = [
+            {
+                "min_level" = "info";
+                "writers" = [
+                    "info";
+                ];
+            };
+            {
+                "min_level" = "error";
+                "writers" = [
+                    "stderr";
+                ];
+            };
+            {
+                "min_level" = "debug";
+                "writers" = [
+                    "debug";
+                ];
+            };
+        ];
+        "writers" = {
+            "info" = {
+                "file_name" = "/master/master.log";
+                "type" = "file";
+            };
+            "stderr" = {
+                "type" = "stderr";
+            };
+            "debug" = {
+                "file_name" = "/master/master.debug.log";
+                "type" = "file";
+            };
+        };
+    };
+    "monitoring_port" = 20000;
+    "address_resolver" = {
+        "localhost_fqdn" = "CHANGEME";
+    };
+    "timestamp_manager" = {
+        "request_backoff_time" = 10;
+        "calibration_period" = 10;
+        "commit_advance" = 3000;
+    };
+    "primary_master" = {
+        "cell_id" = "ffffffff-ffffffff-000259-ffffffff";
+        "addresses" = [
+            "n1:10000";
+            "n2:10000";
+            "n3:10000";
+            "n4:10000";
+            "n5:10000";
+        ];
+    };
+}

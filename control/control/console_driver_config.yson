@@ -1,0 +1,70 @@
+{
+    "logging" = {
+        "rules" = [
+            {
+                "min_level" = "info";
+                "writers" = [
+                    "info";
+                ];
+            };
+            {
+                "min_level" = "error";
+                "writers" = [
+                    "stderr";
+                ];
+            };
+        ];
+        "writers" = {
+            "info" = {
+                "file_name" = "/control/console_driver.log";
+                "type" = "file";
+            };
+            "stderr" = {
+                "type" = "stderr";
+            };
+        };
+    };
+    "driver" = {
+        "table_mount_cache" = {
+            "failure_expiration_time" = 1000;
+            "success_probation_time" = 500;
+            "success_expiration_time" = 1000;
+        };
+        "format_defaults" = {
+            "tabular" = <
+                "format" = "text";
+            > "yson";
+            "structured" = <
+                "format" = "text";
+            > "yson";
+        };
+        "enable_udf" = %true;
+        "timestamp_provider" = {
+            "soft_backoff_time" = 100;
+            "hard_backoff_time" = 100;
+            "addresses" = [
+                "n1:10000";
+                "n2:10000";
+                "n3:10000";
+                "n4:10000";
+                "n5:10000";
+            ];
+        };
+        "enable_read_from_followers" = %true;
+        "primary_master" = {
+            "addresses" = [
+                "n1:10000";
+                "n2:10000";
+                "n3:10000";
+                "n4:10000";
+                "n5:10000";
+            ];
+            "cell_id" = "ffffffff-ffffffff-00259-ffffffff";
+            "hard_backoff_time" = 10;
+            "soft_backoff_time" = 10;
+            "retry_attempts" = 5;
+            "rpc_timeout" = 5000;
+            "retry_backoff_time" = 0;
+        };
+    };
+}
