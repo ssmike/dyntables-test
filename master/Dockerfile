@@ -13,5 +13,6 @@ RUN apt-get update && \
 ADD master /master
 ADD ssh /root/.ssh
 RUN chmod +x /master/entrypoint.sh
+RUN touch /log
 
 ENTRYPOINT ["/master/entrypoint.sh"]
