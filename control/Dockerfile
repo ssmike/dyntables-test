@@ -7,7 +7,7 @@ RUN apt-get update && \
     echo 'deb http://dist.yandex.ru/common unstable/all/' >> /etc/apt/sources.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCD11186050CD1A && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
             software-properties-common \
             yandex-internal-root-ca \
             ssh \
@@ -16,7 +16,13 @@ RUN apt-get update && \
             git \
             gnuplot \
             wget \
-            git
+            git \
+            # proxy virtualenv
+            python-virtualenv \
+            gcc \
+            gcc-multilib \
+            python-dev
+
 
 RUN add-apt-repository ppa:webupd8team/java -y && \
     apt-get update && \
@@ -30,6 +36,8 @@ RUN wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
     lein self-install
 
 RUN git clone https://github.yandex-team.ru/ssmike/cypress.git /root/cypress
+RUN git clone https://github.yandex-team.ru/ssmike/yt-proxy.git /root/proxy
+RUN bash /root/proxy/setup.sh
 
 ADD control /control
 ADD ssh /root/.ssh

@@ -5,4 +5,5 @@ rm ~/.ssh/known_hosts
 for i in {1..5}; do
     ssh-keyscan n$i >> ~/.ssh/known_hosts
 done
-git pull
+source ~/proxy/env/bin/activate
+PATH=$PATH:~/proxy/
