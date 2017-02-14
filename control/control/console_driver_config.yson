@@ -8,7 +8,7 @@
                 ];
             };
             {
-                "min_level" = "error";
+                "min_level" = "debug";
                 "writers" = [
                     "stderr";
                 ];
