@@ -17,6 +17,8 @@ RUN apt-get update && \
             gnuplot \
             wget \
             git \
+            vim \
+            zsh \
             # proxy virtualenv
             python-virtualenv \
             gcc \
@@ -42,6 +44,8 @@ RUN bash /root/proxy/setup.sh
 ADD control /control
 ADD ssh /root/.ssh
 ADD bashrc /root/.bashrc
+
+RUN /control/setup-conf.sh
 
 ENV YT_DRIVER_CONFIG_PATH /control/console_driver_config.yson
 WORKDIR /root/cypress
