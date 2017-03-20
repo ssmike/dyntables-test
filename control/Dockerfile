@@ -48,6 +48,6 @@ ADD bashrc /root/.bashrc
 RUN /control/setup-conf.sh
 
 ENV YT_DRIVER_CONFIG_PATH /control/console_driver_config.yson
-WORKDIR /root/cypress
+WORKDIR /root/dyntables
 
 CMD tail -f /dev/null

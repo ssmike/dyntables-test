@@ -1,8 +1,7 @@
 #!/bin/bash
 cd /root/
-git init
-git remote add origin https://github.com/ssmike/dotfiles
-git pull origin
-git checkout mini
+git clone https://github.com/ssmike/dotfiles config
+cd config
 git submodule update --init
+./make-symlinks.sh
 chsh root -s /bin/zsh

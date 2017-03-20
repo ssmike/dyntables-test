@@ -18,7 +18,7 @@ services:
     hostname: master
     privileged: true
   node:
-      container_name: jespen-node-prototype
+      container_name: jepsen-node-prototype
       privileged: true
       build: ./node
   n1:

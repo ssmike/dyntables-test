@@ -53,11 +53,7 @@
         "enable_read_from_followers" = %true;
         "primary_master" = {
             "addresses" = [
-                "n1:10000";
-                "n2:10000";
-                "n3:10000";
-                "n4:10000";
-                "n5:10000";
+                "master:10000";
             ];
             "cell_id" = "ffffffff-ffffffff-00259-ffffffff";
             "hard_backoff_time" = 10;

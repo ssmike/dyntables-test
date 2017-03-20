@@ -10,6 +10,7 @@ RUN apt-get update && \
         apt-get install -y yandex-internal-root-ca ssh yandex-yt --no-install-recommends
 
 ADD node /node
+ADD jepsen /jepsen
 ADD ssh /root/.ssh
 RUN chmod +x /node/entrypoint.sh
 RUN touch /log
