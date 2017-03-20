@@ -1,12 +1,8 @@
 {
     "addresses" = [
         [
-            "interconnect";
-            "n1";
-        ];
-        [
             "default";
-            "n1";
+            "CHANGEME";
         ];
     ];
     "cluster_connection" = {
@@ -24,7 +20,7 @@
             "hard_backoff_time" = 10;
             "soft_backoff_time" = 10;
             "retry_attempts" = 5;
-            "rpc_timeout" = 5000;
+            "rpc_timeout" = 3000;
             "retry_backoff_time" = 10;
         };
         "enable_udf" = %true;
@@ -108,9 +104,9 @@
         "read_thread_count" = 2;
         "incremental_heartbeat_period" = 300;
     };
-    "monitoring_port" = 22665;
+    "monitoring_port" = 20000;
     "address_resolver" = {
-        "localhost_fqdn" = "n1";
+        "localhost_fqdn" = "CHANGEME";
     };
     "exec_agent" = {
         "scheduler_connector" = {
