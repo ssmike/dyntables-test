@@ -41,11 +41,7 @@
         "soft_backoff_time" = 100;
         "hard_backoff_time" = 100;
         "addresses" = [
-            "n1:10000";
-            "n2:10000";
-            "n3:10000";
-            "n4:10000";
-            "n5:10000";
+            "master:10000";
         ];
     };
     "logging" = {
@@ -95,11 +91,7 @@
     "primary_master" = {
         "cell_id" = "ffffffff-ffffffff-000259-ffffffff";
         "addresses" = [
-            "n1:10000";
-            "n2:10000";
-            "n3:10000";
-            "n4:10000";
-            "n5:10000";
+            "master:10000";
         ];
     };
 }

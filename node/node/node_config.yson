@@ -1,0 +1,162 @@
+{
+    "addresses" = [
+        [
+            "interconnect";
+            "n1";
+        ];
+        [
+            "default";
+            "n1";
+        ];
+    ];
+    "cluster_connection" = {
+        "cell_directory" = {
+            "retry_attempts" = 5;
+            "soft_backoff_time" = 10;
+            "hard_backoff_time" = 10;
+            "retry_backoff_time" = 10;
+        };
+        "primary_master" = {
+            "cell_id" = "ffffffff-ffffffff-00259-ffffffff";
+            "addresses" = [
+                "master:10000";
+            ];
+            "hard_backoff_time" = 10;
+            "soft_backoff_time" = 10;
+            "retry_attempts" = 5;
+            "rpc_timeout" = 5000;
+            "retry_backoff_time" = 10;
+        };
+        "enable_udf" = %true;
+        "timestamp_provider" = {
+            "soft_backoff_time" = 100;
+            "hard_backoff_time" = 100;
+            "addresses" = [
+                "master:10000";
+            ];
+        };
+        "enable_read_from_followers" = %true;
+    };
+    "resource_limits" = {
+        "memory" = 22733127680;
+    };
+    "cluster_directory_synchronizer" = {
+        "sync_period" = 500;
+    };
+    "bus_server" = {
+        "bind_retry_count" = 10;
+        "bind_retry_backoff" = 3000;
+    };
+    "tablet_node" = {
+        "resource_limits" = {
+            "tablet_dynamic_memory" = 524288000;
+            "slots" = 3;
+            "tablet_static_memory" = 0;
+        };
+        "hydra_manager" = {
+            "leader_lease_grace_delay" = 600;
+            "leader_lease_check_period" = 100;
+            "leader_lease_timeout" = 500;
+        };
+    };
+    "orchid_cache_update_period" = 0;
+    "logging" = {
+        "rules" = [
+            {
+                "min_level" = "info";
+                "writers" = [
+                    "info";
+                ];
+            };
+        ];
+        "writers" = {
+            "info" = {
+                "file_name" = "/node/node.log";
+                "type" = "file";
+            };
+        };
+    };
+    "data_node" = {
+        "register_retry_period" = 100;
+        "block_cache" = {
+            "uncompressed_data" = {
+                "capacity" = 524288000;
+            };
+            "compressed_data" = {
+                "capacity" = 209715200;
+            };
+        };
+        "chunk_meta_cache" = {
+            "capacity" = 0;
+        };
+        "max_bytes_per_read" = 10737418240;
+        "cache_locations" = [
+            {
+                "path" = "/node/chunk_cache";
+                "quota" = 268435456;
+            };
+        ];
+        "store_locations" = [
+            {
+                "low_watermark" = 0;
+                "path" = "/node/chunk_store";
+                "enable_journals" = %true;
+                "high_watermark" = 0;
+            };
+        ];
+        "write_thread_count" = 2;
+        "read_thread_count" = 2;
+        "incremental_heartbeat_period" = 300;
+    };
+    "monitoring_port" = 22665;
+    "address_resolver" = {
+        "localhost_fqdn" = "n1";
+    };
+    "exec_agent" = {
+        "scheduler_connector" = {
+            "heartbeat_splay" = 50;
+            "heartbeat_period" = 100;
+            "unsuccess_heartbeat_backoff_time" = 50;
+        };
+        "node_directory_prepare_backoff_time" = 100;
+        "job_controller" = {
+            "resource_limits" = {
+                "user_slots" = 10;
+                "cpu" = 1;
+                "memory" = 17179869184;
+            };
+        };
+        "slot_manager" = {
+            "slot_initialization_failure_is_fatal" = %true;
+            "job_environment" = {
+                "start_uid" = 29956;
+                "type" = "simple";
+            };
+            "locations" = [
+                {
+                    "path" = "/node/slots";
+                };
+            ];
+        };
+        "job_proxy_logging" = {
+            "rules" = [
+                {
+                    "min_level" = "info";
+                    "writers" = [
+                        "info";
+                    ];
+                };
+            ];
+            "writers" = {
+                "info" = {
+                    "file_name" = "/node/job_proxy.log";
+                    "type" = "file";
+                };
+            };
+        };
+    };
+    "node_directory_synchronizer" = {
+        "sync_period" = 100;
+    };
+    "rpc_port" = 10000;
+}

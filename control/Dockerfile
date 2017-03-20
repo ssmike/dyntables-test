@@ -37,7 +37,7 @@ RUN wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
     chmod +x /usr/bin/lein && \
     lein self-install
 
-RUN git clone https://github.yandex-team.ru/ssmike/cypress.git /root/cypress
+RUN git clone https://github.yandex-team.ru/ssmike/dyntables.git /root/dyntables
 RUN git clone https://github.yandex-team.ru/ssmike/yt-proxy.git /root/proxy
 RUN bash /root/proxy/setup.sh
 

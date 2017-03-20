@@ -6,15 +6,21 @@ services:
     build: ./control
     privileged: true
     links:
+      - master
       - n1
       - n2
       - n3
       - n4
       - n5
-  node:
-    container_name: jepsen-node
+  master:
+    container_name: jepsen-master
     build: ./master
+    hostname: master
     privileged: true
+  node:
+      container_name: jespen-node-prototype
+      privileged: true
+      build: ./node
   n1:
     extends: node
     container_name: jepsen-n1
