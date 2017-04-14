@@ -5,3 +5,5 @@ cd config
 git submodule update --init
 ./make-symlinks.sh
 chsh root -s /bin/zsh
+vim -c ":BundleUpdate"
+rm -r /root/.vim/bundle/YouCompleteMe/
