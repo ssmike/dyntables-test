@@ -39,7 +39,6 @@ RUN wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
     chmod +x /usr/bin/lein && \
     lein self-install
 
-RUN git clone https://github.yandex-team.ru/ssmike/dyntables.git /root/dyntables
 RUN git clone https://github.yandex-team.ru/ssmike/yt-proxy.git /root/proxy
 RUN bash /root/proxy/setup.sh
 
@@ -50,6 +49,6 @@ ADD bashrc /root/.bashrc
 RUN /control/setup-conf.sh
 
 ENV YT_DRIVER_CONFIG_PATH /control/console_driver_config.yson
-WORKDIR /root/dyntables
+WORKDIR /root/
 
 CMD tail -f /dev/null
