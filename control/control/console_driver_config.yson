@@ -59,7 +59,7 @@
             "hard_backoff_time" = 10;
             "soft_backoff_time" = 10;
             "retry_attempts" = 5;
-            "rpc_timeout" = 5000;
+            "rpc_timeout" = 1000;
             "retry_backoff_time" = 0;
         };
     };
