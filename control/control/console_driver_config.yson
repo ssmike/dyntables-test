@@ -29,6 +29,7 @@
             "failure_expiration_time" = 1000;
             "success_probation_time" = 500;
             "success_expiration_time" = 1000;
+            "on_error_retry_count" = 1;
         };
         "format_defaults" = {
             "tabular" = <
@@ -42,6 +43,7 @@
         "timestamp_provider" = {
             "soft_backoff_time" = 100;
             "hard_backoff_time" = 100;
+            "retry_timeout" = 3000;
             "addresses" = [
                 "n1:10000";
                 "n2:10000";
@@ -59,7 +61,7 @@
             "hard_backoff_time" = 10;
             "soft_backoff_time" = 10;
             "retry_attempts" = 5;
-            "rpc_timeout" = 1000;
+            "rpc_timeout" = 3000;
             "retry_backoff_time" = 0;
         };
     };

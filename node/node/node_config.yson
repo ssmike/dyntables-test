@@ -64,10 +64,20 @@
                     "info";
                 ];
             };
+            {
+                "min_level" = "debug";
+                "writers" = [
+                    "debug";
+                ];
+            }
         ];
         "writers" = {
             "info" = {
                 "file_name" = "/node/node.log";
+                "type" = "file";
+            };
+            "debug" = {
+                "file_name" = "/node/node.debug.log";
                 "type" = "file";
             };
         };
