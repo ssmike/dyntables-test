@@ -7,4 +7,4 @@ for i in {1..5}; do
 done
 ssh-keyscan master >> ~/.ssh/known_hosts
 source ~/proxy/env/bin/activate
-PATH=$PATH:~/proxy/
+PATH=$PATH:~/proxy/:~
