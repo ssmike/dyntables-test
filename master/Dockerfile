@@ -7,7 +7,23 @@ RUN apt-get update && \
         echo 'deb http://dist.yandex.ru/common unstable/all/' >> /etc/apt/sources.list && \
         apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCD11186050CD1A && \
         apt-get update && \
-        apt-get install -y yandex-internal-root-ca ssh yandex-yt --no-install-recommends
+        apt-get install --no-install-recommends -y yandex-internal-root-ca ssh yandex-yt \
+                        wget \
+                        curl \
+                        vim \
+                        man-db \
+                        faketime \
+                        ntpdate \
+                        unzip \
+                        iptables \
+                        psmisc \
+                        tar \
+                        bzip2 \
+                        libzip2 \
+                        iputils-ping \
+                        iproute \
+                        rsyslog \
+                        logrotate
 
 ADD master /master
 ADD jepsen /jepsen
