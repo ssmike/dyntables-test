@@ -40,6 +40,10 @@
             > "yson";
         };
         "enable_udf" = %true;
+        "write_timeout" = 3000;
+        "transaction_manager" = {
+            "retry_timeout" = 3000;
+        };
         "timestamp_provider" = {
             "soft_backoff_time" = 100;
             "hard_backoff_time" = 100;
