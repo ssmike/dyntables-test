@@ -12,20 +12,12 @@ RUN apt-get update && \
             software-properties-common \
             yandex-internal-root-ca \
             ssh \
+            yandex-yt \
             yandex-yt-python \
             yandex-yt-python-driver \
             git \
             gnuplot \
-            wget \
-            git \
-            vim \
-            zsh \
-            # proxy virtualenv
-            python-virtualenv \
-            gcc \
-            gcc-multilib \
-            python-dev \
-            yandex-yt-python-yson
+            wget
 
 
 RUN add-apt-repository ppa:webupd8team/java -y && \
@@ -39,14 +31,9 @@ RUN wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
     chmod +x /usr/bin/lein && \
     lein self-install
 
-RUN git clone https://github.yandex-team.ru/ssmike/yt-proxy.git /root/proxy
-RUN bash /root/proxy/setup.sh
-
 ADD control /control
 ADD ssh /root/.ssh
 ADD bashrc /root/.bashrc
-
-RUN /control/setup-conf.sh
 
 ENV YT_DRIVER_CONFIG_PATH /control/console_driver_config.yson
 WORKDIR /root/

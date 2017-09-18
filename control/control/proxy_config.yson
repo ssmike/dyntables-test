@@ -1,0 +1,63 @@
+{
+  address_resolver = {
+    enable_ipv4 = %true;
+    enable_ipv6 = %true;
+    localhost_fqdn = "control";
+  };
+  cluster_connection = {
+    enable_read_from_followers = %true;
+    enable_udf = %true;
+    networks = [
+      default;
+    ];
+    primary_master = {
+      addresses = [
+        "master:10000";
+      ];
+      cell_id = "ffffffff-ffffffff-000259-ffffffff";
+      retry_attempts = 5;
+      retry_timeout = 3000;
+      rpc_timeout = 3000;
+    };
+    table_mount_cache = {
+      expire_after_successful_update_time = 30000;
+    };
+    timestamp_provider = {
+      addresses = [
+        "master:10000";
+      ];
+    };
+  };
+  logging = {
+    check_space_period = 5000;
+    flush_period = 1000;
+    min_disk_space = 5368709120;
+    rules = [
+      {
+        min_level = debug;
+        writers = [
+          debug;
+        ];
+      };
+      {
+        min_level = info;
+        writers = [
+          info;
+        ];
+      };
+    ];
+    watch_period = 5000;
+    writers = {
+      debug = {
+        file_name = "/control/proxy.debug.log";
+        type = file;
+      };
+      info = {
+        file_name = "/control/proxy.log";
+        type = file;
+      };
+    };
+  };
+  monitoring_port = 10000;
+  rpc_port = 3000;
+}

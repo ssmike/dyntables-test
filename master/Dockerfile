@@ -10,7 +10,6 @@ RUN apt-get update && \
         apt-get install --no-install-recommends -y yandex-internal-root-ca ssh yandex-yt \
                         wget \
                         curl \
-                        vim \
                         man-db \
                         faketime \
                         ntpdate \
