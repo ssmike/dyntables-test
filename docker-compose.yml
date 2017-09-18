@@ -41,4 +41,10 @@ services:
     extends: node
     container_name: jepsen-n5
     hostname: n5
-
+networks:
+  default:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: "2402:9400:1000:7::/64"

@@ -15,6 +15,7 @@ RUN apt-get update && \
             yandex-yt \
             yandex-yt-python \
             yandex-yt-python-driver \
+            yandex-yt-python-yson \
             git \
             gnuplot \
             wget
