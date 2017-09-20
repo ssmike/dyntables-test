@@ -60,4 +60,5 @@
   };
   monitoring_port = 10000;
   rpc_port = 3000;
+  enable_authentication = %false;
 }

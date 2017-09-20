@@ -5,8 +5,12 @@ import yt.wrapper as yt
 import sys
 import os
 import time
+import json
 
 TABLE_PATH=sys.argv[1]
+YT_KEYS=json.loads(sys.argv[2])
+YT_SHARDS=json.loads(sys.argv[3])
+
 raw_config = open(os.environ['YT_DRIVER_CONFIG_PATH']).read()
 yt.config = yson.loads(raw_config)
 
@@ -18,13 +22,13 @@ def retry(f):
             print(e)
 
 def yt_key(x):
-    return {0:2, 1:21, 2:31, 3:41, 4:51}[x]
+    return YT_KEYS[x]
 
 def wait_for_yt():
     retry(lambda: yt.get('/'))
 
 def init_table():
-    retry(lambda: yt.insert_rows(TABLE_PATH, [dict(key=yt_key(i), value=1) for i in range(5)]))
+    retry(lambda: yt.insert_rows(TABLE_PATH, [dict(key=yt_key(i), value=1) for i in range(len(YT_KEYS))]))
 
 def mount_table():
     if retry(lambda: yt.get("//sys/tablet_cells/@count")) == 0:
@@ -36,13 +40,13 @@ def mount_table():
     schema = yson.loads("<strict=%true; unique_keys=%true>[{name=key;\
                             type=int64; sort_order=ascending}; {name=value; type=int64}]")
     retry(lambda: yt.create_table(TABLE_PATH, attributes={"dynamic": True, "schema": schema}))
-    retry(lambda: yt.reshard_table(TABLE_PATH, pivot_keys=[[], [20], [30], [40], [50]]))
+    retry(lambda: yt.reshard_table(TABLE_PATH, pivot_keys=YT_SHARDS))
 
     while retry(lambda: yt.get(TABLE_PATH + "/@tablet_state")) != "mounted":
         try:
             yt.mount_table(TABLE_PATH)
         except Exception as e:
-            eprint(e)
+            print(e, file=sys.stderr)
     init_table()
 
 if __name__ == "__main__":
