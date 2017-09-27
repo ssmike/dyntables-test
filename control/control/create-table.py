@@ -8,7 +8,7 @@ import time
 import json
 
 TABLE_PATH=sys.argv[1]
-YT_KEYS=json.loads(sys.argv[2])
+YT_STATE=json.loads(sys.argv[2])
 YT_SHARDS=json.loads(sys.argv[3])
 
 raw_config = open(os.environ['YT_DRIVER_CONFIG_PATH']).read()
@@ -20,15 +20,13 @@ def retry(f):
             return f()
         except Exception as e:
             print(e)
-
-def yt_key(x):
-    return YT_KEYS[x]
+            time.sleep(1)
 
 def wait_for_yt():
     retry(lambda: yt.get('/'))
 
 def init_table():
-    retry(lambda: yt.insert_rows(TABLE_PATH, [dict(key=yt_key(i), value=1) for i in range(len(YT_KEYS))]))
+    retry(lambda: yt.insert_rows(TABLE_PATH, [dict(key=int(k), value=v) for k, v in YT_STATE.items()]))
 
 def mount_table():
     if retry(lambda: yt.get("//sys/tablet_cells/@count")) == 0:

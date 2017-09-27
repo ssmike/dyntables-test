@@ -12,6 +12,8 @@ services:
       - n3
       - n4
       - n5
+    volumes:
+        - /home/ssmike/src/clj/yt-kv:/src
   master:
     container_name: jepsen-master
     build: ./master
